@@ -90,7 +90,3 @@ controller.hears(['milk', 'leche'], 'direct_message,direct_mention,mention', fun
     if (diff > 3)
         bot.reply(message, 'Maybe you should change it :wink:') ;
 });
-
-controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
-})
