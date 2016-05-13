@@ -90,7 +90,7 @@ controller.hears(['milk', 'leche'], 'direct_message,direct_mention,mention', fun
 });
 
 // 'Cafe con Piernas' controller
-controller.hears(['cafe con piernas'], 'direct_message, direct_mention,mention', function(bot, message) {
+controller.hears(['cafe con piernas'], 'direct_message,direct_mention,mention', function(bot, message) {
     console.log(message)
     var url = 'http://www.800.cl/ResultadoEspecial.asp?c=560&r=664&p=0&esp=7059,1709';
     request(url, function(error, response, html) {
