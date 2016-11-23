@@ -12,12 +12,14 @@ if (!slackToken) {
 
 var controller = Botkit.slackbot()
 var bot = controller.spawn({
-    token: slackToken
+    token: slackToken,
+    retry: Infinity
 })
 
 bot.startRTM(function(err, bot, payload) {
     if (err) {
-        throw new Error('Could not connect to Slack')
+        console.error("Cannot connect to Slack");
+        throw new Error('Could not connect to Slack');
     }
 })
 
