@@ -2,6 +2,9 @@ var Botkit = require('botkit')
 var milkDate = new Date('1990-01-01');
 var request = require('request');
 var cheerio = require('cheerio');
+var Cleverbot = require('./lib/cleverbot');
+
+cleverbot = new Cleverbot;
 
 // Expect a SLACK_TOKEN environment variable
 var slackToken = process.env.SLACK_TOKEN
@@ -52,7 +55,12 @@ controller.hears(['hello', 'hi'], ['direct_message'], function(bot, message) {
 })
 
 controller.hears('.*', ['mention'], function(bot, message) {
-    bot.reply(message, 'You really do care about me. :heart:')
+    Cleverbot.prepare(function(){
+    cleverbot.write(message.text, function (response) {
+        bot.reply(message, response.message);
+    });
+});
+    
 })
 
 controller.hears(['help', 'ayuda'], 'direct_message,direct_mention,mention', function(bot, message) {
